@@ -1,9 +1,8 @@
 const User = require('../models/User');
 
 const getAllUsers = async (req, res) => {
-  console.log('users::');
   try {
-    const users = await User.find();
+    const users = await User.find().select('-password -refreshToken');
     res.status(200).json(users);
   } catch (error) {
     console.log(error);
