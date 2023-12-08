@@ -2,17 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 import useAuth from '../hooks/useAuth';
+import useInput from '../hooks/useInput';
+import useToggle from '../hooks/useToggle';
 
 const Login = () => {
-  const { auth, setAuth, persist, setPersist } = useAuth();
+  const { setAuth } = useAuth();
   const errorRef = useRef();
   const userRef = useRef();
-  const [user, setUser] = useState('jhamlal');
-  const [password, setPassword] = useState('Abcd#123');
-  const [errMsg, setErrMsg] = useState();
-  const [success, setSuccess] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [user, resetUser, userAttribs] = useInput('user', '');
+  const [password, setPassword] = useState('Abcd#123');
+  const [errMsg, setErrMsg] = useState();
+  const [check, toggleCheck] = useToggle('persist', false);
   const from = location.state?.from?.pathname || '/';
 
   useEffect(() => {
@@ -22,13 +24,6 @@ const Login = () => {
   useEffect(() => {
     setErrMsg('');
   }, [user, password]);
-
-  const togglePersist = () => {
-    setPersist((prev) => !prev);
-  };
-  useEffect(() => {
-    localStorage.setItem('persist', persist);
-  }, [persist]);
 
   const submitHandle = async (event) => {
     event.preventDefault();
@@ -44,9 +39,10 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      const { roles, accessToken } = data;
-      setAuth({ user, accessToken, roles });
-      console.log('data::', data);
+      console.log('login data::', data);
+      const { accessToken } = data;
+      setAuth({ user, accessToken });
+      resetUser();
       navigate(from, { replace: true });
     } catch (error) {
       if (!error.response) {
@@ -90,8 +86,7 @@ const Login = () => {
                   name="username"
                   id="username"
                   required
-                  value={user}
-                  onChange={(e) => setUser(e.target.value)}
+                  {...userAttribs}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg 
                   focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 
                   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
@@ -125,8 +120,8 @@ const Login = () => {
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      checked={persist}
-                      onChange={togglePersist}
+                      checked={check}
+                      onChange={toggleCheck}
                     />
                   </div>
                   <div className="ml-3 text-sm">
