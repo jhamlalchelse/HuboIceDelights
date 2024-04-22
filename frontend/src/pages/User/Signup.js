@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "../api/axios";
+import axios from "../../api/axios";
 
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9_]{3,25}$/;
 const PWD_REGEX =

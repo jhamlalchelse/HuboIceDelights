@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import Users from "./Users";
-import Loader from "./Loader";
+import Users from "../components/Users";
+import Loader from "../components/Loader";
 
 const Admin = () => {
   const [loading, setLoading] = useState(true);

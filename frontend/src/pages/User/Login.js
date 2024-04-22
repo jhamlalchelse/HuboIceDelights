@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "../api/axios";
-import useAuth from "../hooks/useAuth";
-import useInput from "../hooks/useInput";
-import useToggle from "../hooks/useToggle";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
+import useInput from "../../hooks/useInput";
+import useToggle from "../../hooks/useToggle";
 
 const Login = () => {
   const { setAuth } = useAuth();

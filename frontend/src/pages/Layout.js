@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header/Header";
-import Footer from "../pages/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   const [theme, setTheme] = useState(null);
