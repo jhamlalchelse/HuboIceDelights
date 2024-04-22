@@ -1,28 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useLocation, useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
-const Users = () => {
-  const [users, setUsers] = useState([]);
-  const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const { data } = await axiosPrivate.get('users');
-        const usernames = data?.map((item) => item.username);
-        setUsers(usernames);
-        console.log('users:', usernames);
-      } catch (error) {
-        console.error(error);
-        navigate('/login', { state: { from: location }, replace: true });
-      }
-    };
-    getUsers();
-  }, []);
-
+const Users = ({ setLoading, users }) => {
+  
   return (
     <article className="flex justify-center items-center">
       <div className="bg-slate-300 rounded p-5">
