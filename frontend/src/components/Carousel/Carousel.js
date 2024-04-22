@@ -14,7 +14,7 @@ const CarouselDelights = () => {
     <Carousel className="carousel-container" {...carouselStyle}>
       {images.map((item, index) => {
         return (
-          <div key={index} style={{ height: "500px" }}>
+          <div key={index} style={{ height: "600px" }}>
             <img
               src={item.url}
               alt={item.alt}
