@@ -1,0 +1,46 @@
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Next */
+.carousel .control-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .control-next.control-arrow {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: auto !important;
+}
+.carousel .control-next.control-arrow:before {
+  border-left: 15px solid #fff !important;
+  height: 15px;
+}
+
+/* Previous */
+.carousel .control-prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .control-prev.control-arrow {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: auto !important;
+}
+.carousel .control-prev.control-arrow:before {
+  border-right: 15px solid #ffffff !important;
+  height: 15px;
+  margin-right: 50px;
+}
+
+/* legend */
+.legend {
+  background-color: transparent !important;
+  position: absolute;
+  top: 100px;
+}

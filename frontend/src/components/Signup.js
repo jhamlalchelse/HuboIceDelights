@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from '../api/axios';
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "../api/axios";
 
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9_]{3,25}$/;
 const PWD_REGEX =
@@ -10,15 +10,15 @@ const Signup = () => {
   const userRef = useRef();
   const errorRef = useRef();
 
-  const [user, setUser] = useState('jhamlal');
+  const [user, setUser] = useState("jhamlal");
   const [validUser, setValidUser] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
-  const [password, setPassword] = useState('Abcd#123');
+  const [password, setPassword] = useState("Abcd#123");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState('Abcd#123');
+  const [matchPwd, setMatchPwd] = useState("Abcd#123");
   const [validMatchPwd, setValidMatchPwd] = useState(false);
   const [matchPwdFocus, setMatchPwdFocus] = useState(false);
 
@@ -42,7 +42,7 @@ const Signup = () => {
   }, [password, matchPwd]);
 
   useEffect(() => {
-    setErrMsg('');
+    setErrMsg("");
   }, [user, password, matchPwd]);
 
   const submitHandle = async (e) => {
@@ -50,18 +50,18 @@ const Signup = () => {
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(password);
     if (!v1 || !v2) {
-      setErrMsg('Invalid Username and Password');
+      setErrMsg("Invalid Username and Password");
       return;
     }
     try {
       const { data } = await axios.post(
-        'register/',
+        "register/",
         {
           username: user,
           password: password,
         },
         {
-          headers: { 'Content-Type': 'application/json' },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
@@ -69,11 +69,11 @@ const Signup = () => {
       setSuccess(true);
     } catch (error) {
       if (!error.response) {
-        setErrMsg('No server response');
+        setErrMsg("No server response");
       } else if (error.response?.status === 409) {
-        setErrMsg('Username Already Taken');
+        setErrMsg("Username Already Taken");
       } else {
-        setErrMsg('Registration Failed');
+        setErrMsg("Registration Failed");
       }
       errorRef.current.focus();
       // console.error(error);
@@ -90,7 +90,7 @@ const Signup = () => {
               </p>
               <Link
                 className="text-blue-500 hover:underline flex justify-center my-5"
-                to={'/login'}
+                to={"/login"}
               >
                 Go To The Login Page
               </Link>
@@ -99,7 +99,7 @@ const Signup = () => {
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <p
                 ref={errorRef}
-                className={`${errMsg ? 'text-rose-500' : 'hidden'}`}
+                className={`${errMsg ? "text-rose-500" : "hidden"}`}
               >
                 {errMsg}
               </p>
@@ -133,8 +133,8 @@ const Signup = () => {
                   <p
                     className={`bg-rose-200 mt-1.5 rounded-md p-2 ${
                       user && userFocus && !validUser
-                        ? 'text-rose-500'
-                        : 'hidden'
+                        ? "text-rose-500"
+                        : "hidden"
                     }`}
                   >
                     4 to 24 character allowed
@@ -161,7 +161,7 @@ const Signup = () => {
                   />
                   <p
                     className={`bg-rose-200 mt-1.5 rounded-md p-2 
-                    ${pwdFocus && !validPwd ? 'text-rose-500' : 'hidden'}`}
+                    ${pwdFocus && !validPwd ? "text-rose-500" : "hidden"}`}
                   >
                     8 to 24 character allowed with start capitall letter and
                     minimum one special character except '@'
@@ -189,29 +189,30 @@ const Signup = () => {
                   <p
                     className={`bg-rose-200 mt-1.5 rounded-md p-2 ${
                       matchPwdFocus && !validMatchPwd
-                        ? 'text-rose-500'
-                        : 'hidden'
+                        ? "text-rose-500"
+                        : "hidden"
                     }`}
                   >
                     password not match
                   </p>
                 </div>
+                
                 <button
-                  type="submit"
+                   type="submit"
                   disabled={
                     !validUser || !validPwd || !validMatchPwd ? true : false
                   }
-                  className="w-full text-white bg-blue-600 
-                  hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 
-                  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 
-                  dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full text-white bg-sky-700 hover:bg-sky-800  
+                  focus:outline-none rounded-lg px-5 py-2.5 font-serif tracking-wider
+                  text-center active:translate-y-1"
                 >
                   Sign up
                 </button>
+
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Do have an account yet ?{' '}
+                  Do have an account yet ?{" "}
                   <Link
-                    to={'/login'}
+                    to={"/login"}
                     className="font-medium text-blue-600 hover:underline dark:text-blue-500"
                   >
                     Sign in

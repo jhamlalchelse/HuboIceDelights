@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import { AuthProvider } from './context/AuthProvider';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
-  disableReactDevTools();
-}
+// if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
+//   disableReactDevTools();
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,17 +1,17 @@
-import React from 'react';
-import Login from './components/Login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Signup from './components/Signup';
-import Layout from './components/Layout';
-import Unauthorize from './components/Unauthorize';
-import Linkage from './components/Linkage';
-import Home from './components/Home';
-import Lounge from './components/Lounge';
-import Editor from './components/Editor';
-import Admin from './components/Admin';
-import Missing from './components/Missing';
-import RequireAuth from './components/RequireAuth';
-import PersistLogin from './components/PersistLogin';
+import React from "react";
+import Login from "./components/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Signup from "./components/Signup";
+import Layout from "./components/Layout";
+import Unauthorize from "./components/Unauthorize";
+import Linkage from "./components/Linkage";
+import Home from "./components/Home";
+import Lounge from "./components/Lounge";
+import Editor from "./components/Editor";
+import Admin from "./components/Admin";
+import Missing from "./components/Missing";
+import RequireAuth from "./components/RequireAuth";
+import PersistLogin from "./components/PersistLogin";
 
 const ROLES = {
   User: 2001,

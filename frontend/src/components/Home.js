@@ -1,33 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import useLogout from '../hooks/useLogout';
+import CarouselDelights from './Carousel/Carousel';
 
 const Home = () => {
-  const logout = useLogout();
-
   return (
-    <div className="h-screen flex justify-center items-center">
-      <div className="bg-slate-300 p-5 rounded-md">
-        <ul>
-          <li className="hover:underline text-blue-800 my-1 px-5 bg-blue-200">
-            <Link to={'/admin'}>Admin</Link>
-          </li>
-          <li className="hover:underline text-blue-800 my-1 px-5 bg-blue-200">
-            <Link to={'/editor'}>Editor</Link>
-          </li>
-          <li className="hover:underline text-blue-800 my-1 px-5 bg-blue-200">
-            <Link to={'/lounge'}>Lounge</Link>
-          </li>
-          <li className="hover:underline text-blue-800 my-1 px-5 bg-blue-200">
-            <Link to={'/linkage'}>Linkage</Link>
-          </li>
-        </ul>
-        <button
-          onClick={() => logout()}
-          className="bg-teal-500 px-5 py-1 mt-2 rounded"
-        >
-          Logout
-        </button>
+    <div>
+      <div className="bg-fuchsia-100">
+        <CarouselDelights />
+      </div>
+      <div className="bg-pink-200 p-5">
+        <div className="grid grid-cols-2 items-center my-5">
+          <p className="text-3xl font-semibold font-serif w-72">
+            Explore Our Best Categories
+          </p>
+          <p className="ms-16 text-sm float-right">
+            Spartan Community, Evince Has Established Its Steeping Pillars of
+            Commitments, Ethics,Disrupting the Market with a decade of
+            Experience and A Dauntless Motto of Integrity, Innovation, and a
+            Strategical Approach.
+          </p>
+        </div>
+        <div className="grid grid-cols-5 gap-6">
+          {[1, 2, 3, 4, 5].map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="bg-pink-200 rounded-md shadow-xl border border-pink-300"
+              >
+                <div className="h-52 bg-slate-400 rounded-t-md"></div>
+                <div className="px-1 pb-1">
+                  <p className="text-xl uppercase font-medium font-serif mt-1">
+                    chocolate
+                  </p>
+                  <p className="my-1">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. At
+                    quia quae iure dolorem suscipit, vero voluptatem provident
+                    reprehenderit sunt deleniti.
+                  </p>
+                  <button className="bg-red-500 py-0,5 px-3 rounded-sm my-1 text-white font-serif">
+                    visit
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

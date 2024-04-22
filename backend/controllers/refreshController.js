@@ -26,7 +26,7 @@ const refreshController = async (req, res) => {
           },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: '10m',
+            expiresIn: '1d',
           }
         );
         res.status(200).json({
